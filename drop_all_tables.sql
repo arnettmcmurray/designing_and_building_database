@@ -1,0 +1,1 @@
+-- Placeholder content for drop_all_tables.sql

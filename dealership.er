@@ -1,0 +1,47 @@
+[cars]
+    *id {label:"INTEGER"}
+    customer_id {label:"INTEGER"}
+    make {label:"VARCHAR"}
+    model {label:"VARCHAR"}
+    salesperson_id {label:"INTEGER"}
+    vin {label:"VARCHAR"}
+    year {label:"INTEGER"}
+[customers]
+    *id {label:"INTEGER"}
+    email {label:"VARCHAR"}
+    name {label:"VARCHAR"}
+    phone {label:"VARCHAR"}
+[salespeople]
+    *id {label:"INTEGER"}
+    email {label:"VARCHAR"}
+    name {label:"VARCHAR"}
+[invoices]
+    *id {label:"INTEGER"}
+    amount {label:"INTEGER"}
+    car_id {label:"INTEGER"}
+    customer_id {label:"INTEGER"}
+    date {label:"DATE"}
+    salesperson_id {label:"INTEGER"}
+[mechanic_car_link]
+    *id {label:"INTEGER"}
+    car_id {label:"INTEGER"}
+    mechanic_id {label:"INTEGER"}
+[mechanics]
+    *id {label:"INTEGER"}
+    name {label:"VARCHAR"}
+    specialty {label:"VARCHAR"}
+[service_tickets]
+    *id {label:"INTEGER"}
+    car_id {label:"INTEGER"}
+    customer_id {label:"INTEGER"}
+    date {label:"DATE"}
+    description {label:"VARCHAR"}
+customers."id" 1--* cars."customer_id"
+salespeople."id" 1--* cars."salesperson_id"
+cars."id" 1--* invoices."car_id"
+customers."id" 1--* invoices."customer_id"
+salespeople."id" 1--* invoices."salesperson_id"
+cars."id" 1--* mechanic_car_link."car_id"
+mechanics."id" 1--* mechanic_car_link."mechanic_id"
+cars."id" 1--* service_tickets."car_id"
+customers."id" 1--* service_tickets."customer_id"
